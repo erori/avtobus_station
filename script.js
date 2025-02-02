@@ -1,20 +1,19 @@
-// Инициализация карты
 ymaps.ready(init);
 
 function init() {
-    // Создаем карту
+    
     var myMap = new ymaps.Map("map", {
-        center: [55.76, 37.64], // Координаты центра карты (Москва)
-        zoom: 10 // Масштаб карты
+        center: [55.76, 37.64], 
+        zoom: 10 
     });
 
-    // Пример данных об автобусах
+    
     var buses = [
         { number: '123', time: '5 минут', coordinates: [55.75, 37.60] },
         { number: '456', time: '10 минут', coordinates: [55.77, 37.65] }
     ];
 
-    // Добавляем метки на карту
+    
     buses.forEach(function(bus) {
         var placemark = new ymaps.Placemark(bus.coordinates, {
             hintContent: 'Автобус ' + bus.number,
@@ -23,10 +22,10 @@ function init() {
         myMap.geoObjects.add(placemark);
     });
 
-    // Обновляем список автобусов
+    
     updateBusList(buses);
 
-    // Управление масштабом карты
+    
     document.getElementById('zoom-in').addEventListener('click', function() {
         myMap.setZoom(myMap.getZoom() + 1);
     });
@@ -36,10 +35,10 @@ function init() {
     });
 }
 
-// Функция для обновления списка автобусов
+
 function updateBusList(buses) {
     var busList = document.getElementById('bus-list');
-    busList.innerHTML = ''; // Очистка списка
+    busList.innerHTML = ''; 
 
     buses.forEach(function(bus) {
         var li = document.createElement('li');
